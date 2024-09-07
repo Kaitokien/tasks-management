@@ -2,8 +2,6 @@ const express = require('express');
 const database = require('./config/database');
 require('dotenv').config();
 
-const Task = require('./models/tasks_model');
-
 // Routes Version 1
 const routesVer1 = require('./api/v1/routes/index_routes')
 database.connect();
