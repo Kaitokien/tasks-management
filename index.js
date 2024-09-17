@@ -1,6 +1,7 @@
 const express = require('express');
 const database = require('./config/database');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 require('dotenv').config();
 
 // Routes Version 1
@@ -11,6 +12,12 @@ database.connect();
 const app = express();
 const port = process.env.PORT;
 
+// const corOption = {
+//   origin: "http://example.com"
+// }
+// app.use(cors(corOption));
+
+app.use(cors());
 app.use(bodyParser.json());
 
 routesVer1(app);
