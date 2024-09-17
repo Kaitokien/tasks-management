@@ -119,14 +119,31 @@ module.exports.create = async (req, res) => {
     const task = new Task(req.body);
     const data = await task.save();
 
-    console.log(data);
-
     res.json({
       code: 200,
       message: "Tao thanh cong!",
       data: data
     });
   } catch (error) {
+    res.json({
+      code: 400,
+      message: "Loi!"
+    })
+  }
+}
+
+// [PATCH] /api/v1/tasks/edit/:id
+module.exports.edit = async (req, res) => {
+  try {
+    const id = req.params.id;
+    await Task.updateOne({ _id: id }, req.body);
+    res.json({
+      code: 200,
+      message: "Tao thanh cong!"
+    });
+
+  } catch (error) {
+    console.log(error);
     res.json({
       code: 400,
       message: "Loi!"
