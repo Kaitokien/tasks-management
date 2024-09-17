@@ -108,13 +108,10 @@ module.exports.forgotPassword = async (req, res) => {
 module.exports.otpPassword = async (req, res) => {
   const email = req.body.email;
   const otp = req.body.otp;
-  console.log(email, otp);
   const result = await ForgotPassword.findOne({
     email: email,
     otp: otp
   })
-
-  console.log(result)
 
   if(!result) {
     res.json({
